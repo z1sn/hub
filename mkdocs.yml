@@ -1,4 +1,4 @@
-site_name: GaraHub
+site_name: E-857
 theme:
   name: material
   features:
@@ -11,29 +11,47 @@ theme:
     - content.tabs.link
     - content.code.annotation
     - content.code.copy
+    - content.tooltips
   language: es
   palette:
     - scheme: default
       toggle:
-        icon: material/toggle-switch-off-outline 
-        name: Switch to dark mode
-      primary: teal
-      accent: purple 
+        icon: material/brightness-4 
+        name: Cambiar a modo oscuro
+      primary: brown
+      accent: deep orange
     - scheme: slate 
       toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode    
-      primary: teal
-      accent: lime
-      
+        icon: material/brightness-7
+        name: Cambiar a modo claro    
+      primary: brown
+      accent: deep orange
+
+markdown_extensions:
+  - abbr
+  - attr_list
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences      
+
+extra_css:
+  - stylesheets/extra.css
+
 extra:
+  status:
+    new: Recién actualizado
   social:
     - icon: fontawesome/brands/github-alt
-      link: https://github.com/zisn
+      link: https://github.com/z1sn
     - icon: fontawesome/brands/spotify
       link: https://open.spotify.com/user/zisn      
     - icon: fontawesome/brands/steam
       link: https://steamcommunity.com/id/z1sn/
+  generator: false      
 
 copyright: |
-  &copy; 2023 <a href="https://github.com/zisn"  target="_blank" rel="noopener">zisn</a>
+  &copy; 2023 <a href="https://github.com/z1sn" style="color:white" target="_blank" rel="noopener">z1sn</a> — Con la ayuda de <a href="https://pages.github.com/" style="color:white" target="_blank" rel="noopener">GitHub Pages</a> 
