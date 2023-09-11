@@ -1,0 +1,39 @@
+site_name: GaraHub
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: es
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline 
+        name: Switch to dark mode
+      primary: teal
+      accent: purple 
+    - scheme: slate 
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode    
+      primary: teal
+      accent: lime
+      
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/zisn
+    - icon: fontawesome/brands/spotify
+      link: https://open.spotify.com/user/zisn      
+    - icon: fontawesome/brands/steam
+      link: https://steamcommunity.com/id/z1sn/
+
+copyright: |
+  &copy; 2023 <a href="https://github.com/zisn"  target="_blank" rel="noopener">zisn</a>
