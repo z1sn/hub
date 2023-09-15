@@ -14,12 +14,14 @@ theme:
     - content.tooltips
   language: es
   palette:
+  # Palette toggle for light mode -> https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
     - scheme: default
       toggle:
         icon: material/brightness-4 
         name: Cambiar a modo oscuro
       primary: brown
       accent: deep orange
+  # Palette toggle for dark mode      
     - scheme: slate 
       toggle:
         icon: material/brightness-7
@@ -28,22 +30,27 @@ theme:
       accent: deep orange
 
 markdown_extensions:
+  # Activated addons, check documentation
   - abbr
+  - admonition
   - attr_list
-  - pymdownx.snippets
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
-  - admonition
-  - pymdownx.details
+  - pymdownx.details  
+  - pymdownx.keys
+  - pymdownx.snippets
   - pymdownx.superfences      
 
 extra_css:
+  # Custom CSS for a lot of stuff
   - stylesheets/extra.css
 
 extra:
   status:
+  # Adds tooltip to the 'new' icon
     new: Recién actualizado
+  # Footer social links  
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/z1sn
@@ -51,6 +58,7 @@ extra:
       link: https://open.spotify.com/user/zisn      
     - icon: fontawesome/brands/steam
       link: https://steamcommunity.com/id/z1sn/
+  # Hides: Made with Material for MkDocs footer     
   generator: false      
 
 copyright: |

@@ -1,0 +1,176 @@
+/********************
+*       FONTS       *
+********************/
+
+/* OTF */ 
+@font-face {
+    font-family: 'A-OTF-BokutohNStd-Regular';
+    src: url('../fonts/A-OTF-BokutohNStd-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'A-OTF-FolkPro-Regular';
+    src: url('../fonts/A-OTF-FolkPro-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'A-OTF-HappyNStd-Regular';
+    src: url('../fonts/A-OTF-HappyNStd-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'A-OTF-KumoyaStd-Regular';
+    src: url('../fonts/A-OTF-KumoyaStd-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'A-OTF-KyokaICAPro-Regular';
+    src: url('../fonts/A-OTF-KyokaICAPro-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'A-OTF-Shuuei3Std-Regular';
+    src: url('../fonts/A-OTF-Shuuei3Std-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'A-OTF-ZenGoNStd-Regular';
+    src: url('../fonts/A-OTF-ZenGoNStd-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'ArmedBanana';
+    src: url('../fonts/ArmedBanana.otf') format('opentype');
+}
+
+/* TTF */ 
+@font-face {
+    font-family: 'DFCry5_0';
+    src: url('../fonts/DFCry5_0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DFMrg3_0';
+    src: url('../fonts/DFMrg3_0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'F5AJCCPE_0';
+    src: url('../fonts/F5AJCCPE_0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'F5AJCMHG';
+    src: url('../fonts/F5AJCMHG.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'KOI-WIN';
+    src: url('../fonts/KOI-WIN.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MT_TARE';
+    src: url('../fonts/MT_TARE.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'sea';
+    src: url('../fonts/sea.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'SM-WIN';
+    src: url('../fonts/SM-WIN.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'SNsanafon';
+    src: url('../fonts/SNsanafon.ttf') format('truetype');
+}
+
+/* TABLES */
+table td+td { 
+    border-collapse: collapse;
+    border-left: 1px solid black;
+	padding:.3em .4em;
+}
+
+td {
+    white-space:nowrap !important;
+    text-align: center !important;
+}
+
+.kana {
+	font-size:155%;
+	white-space:nowrap;
+}
+
+.romaji {
+	white-space:nowrap;
+	display:block;
+	font-size:85%;
+}
+
+.checkAll a {
+	color:#4d99b7;
+	cursor:pointer;
+}
+
+.checkAll {
+	float:right;
+	font-size:75%;
+    font-variant: small-caps;
+}
+
+.fontPreview {
+    font-size: 160%;
+}
+
+/* KANA PANE */
+
+#game {
+    margin-top: -2em
+}
+
+#kanaBox {
+	text-align:center;
+	font-size:500%;
+}
+
+#input, #count {
+	text-align:center;
+}
+
+#count {
+    padding-bottom: 1em;
+}
+
+#answer {
+	text-align:center;
+	font-size:190%;
+	visibility:hidden;
+}
+
+#wrong {
+    color: #ed7652;
+}
+
+#message {
+	text-align:center;
+	font-size:90%;
+}
+
+#inputBox {
+	width:16em;
+	border:1px solid;
+	padding:10px;
+	text-align:center;
+	font-size:100%;
+    border-radius: 25em;
+}
+
+
+.md-typeset table:not([class]) tbody tr:hover {
+    background-color: transparent;
+}

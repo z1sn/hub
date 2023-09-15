@@ -22,3 +22,10 @@
 
 ### Adding features
 Just edit the `mkdocs.yml` file, use the [official documentation](https://squidfunk.github.io/mkdocs-material/reference/) or [mkdocs.org](https://www.mkdocs.org) if needed.
+
+
+
+### Credits
+- [MkDocs](https://www.mkdocs.org)
+- [MkDocs Material](https://squidfunk.github.io/mkdocs-material/)
+- [Japanese fonts](https://core6000.neocities.org/fonts/)
