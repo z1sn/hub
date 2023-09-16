@@ -1,4 +1,11 @@
 site_name: E-857
+
+nav:
+  - Home: 'index.md'
+  - Japonés:
+    - 'japanese/index.md'
+    - 'japanese/kana.md'
+    - 'Anki': 'japanese/anki.md'
 theme:
   name: material
   features:
@@ -34,13 +41,16 @@ markdown_extensions:
   - abbr
   - admonition
   - attr_list
+  - def_list
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.details  
   - pymdownx.keys
   - pymdownx.snippets
-  - pymdownx.superfences      
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true   
 
 extra_css:
   # Custom CSS for a lot of stuff

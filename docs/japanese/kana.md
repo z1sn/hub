@@ -4,15 +4,11 @@ icon: material/syllabary-hiragana
 <script src="../style/brain.js"></script>
 <link rel="stylesheet" href="../style/style.css">
 
-# Kana
+# :material-syllabary-hiragana: Kana
 
 :material-file-find: Ejemplos de **reglas mnemotécnicas**: <a href="../files/mnemo_hiragana_es.pdf" target="_blank">:fontawesome-regular-file-pdf: hiragana</a> | <a href="../files/mnemo_katakana_es.pdf" target="_blank">:fontawesome-regular-file-pdf: katakana</a>  
 :material-file-video: Vídeos _(en inglés)_: <a href="https://www.youtube.com/watch?v=6p9Il_j0zjc" target="_blank">:material-youtube: hiragana</a> | <a href="https://www.youtube.com/watch?v=s6DKRgtVLGA" target="_blank">:material-youtube: katakana</a>  
 :material-file-edit: Escritura: <a href="https://en.wikibooks.org/wiki/Japanese/Kana/Lessons/Hiragana/Lesson_1" target="_blank">trazos</a>
-
-
-
-
 
 ---
 <div id="game">
@@ -375,7 +371,7 @@ icon: material/syllabary-hiragana
     </table>
 ??? example "Kanas similares"    
     <h3>Kanas similares <span class="checkAll">seleccionar: <a onclick="check('similars')">todo</a> | <a onclick="uncheck('similars')">nada</a></span></h3>
-        Esta sección únicamente sirve para estudiar aquellos que son algo confusos entre sí.
+        :fontawesome-solid-circle-info: Esta sección únicamente sirve para estudiar aquellos caracteres que son algo confusos entre sí.
     <table>
         <tbody>
             <tr>
@@ -499,10 +495,9 @@ icon: material/syllabary-hiragana
             </tr>
         </tbody>
     </table>
-??? abstract "Fuentes"
-    <h3>Fuentes <span class="checkAll">seleccionar: <a onclick="check('allFonts')">todo</a> | <a onclick="uncheck('allFonts')">nada</a></span></h3>
-    Los caracteres pueden llegar a variar <u>MUCHO</u> <strong>dependiendo de la fuente que se utilice</strong>.  
-    En esta sección puedes elegir diferentes fuentes para entrenar. Se recomienda utilizar únicamente la fuerte por defecto al empezar.
+??? abstract "Estilo de fuente"
+    <h3>Estilo de fuente <span class="checkAll">seleccionar: <a onclick="check('allFonts')">todo</a> | <a onclick="uncheck('allFonts')">nada</a></span></h3>
+    :fontawesome-solid-circle-info: Dependiendo de la fuente, <u>los caracteres pueden variar mucho</u>. Se recomienda la fuente por defecto para empezar.
     <table>
         <tbody>
             <tr class="checkRow allFonts">

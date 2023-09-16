@@ -11,3 +11,7 @@
   .heart {
     animation: heart 1000ms infinite;
   }
+
+  .md-typeset h1, .md-content__button {
+    margin-bottom: 0em;
+   }  
