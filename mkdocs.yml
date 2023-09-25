@@ -6,7 +6,11 @@ nav:
     - 'japanese/index.md'
     - 'japanese/kana.md'
     - 'Anki': 'japanese/anki.md'
+  - Herramientas:
+    - 'Navegador': 'tools/browser.md'
 theme:
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
   name: material
   features:
     - navigation.tabs
@@ -15,7 +19,6 @@ theme:
     - navigation.top
     - search.suggest
     - search.highlight
-    - content.tabs.link
     - content.code.annotation
     - content.code.copy
     - content.tooltips
@@ -42,15 +45,24 @@ markdown_extensions:
   - admonition
   - attr_list
   - def_list
+  - md_in_html
+  - pymdownx.caret
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.details  
+      options:
+        custom_icons:
+          - overrides/.icons
+  - pymdownx.details
   - pymdownx.keys
+  - pymdownx.mark
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.tasklist:
-      custom_checkbox: true   
+      custom_checkbox: true
+  - pymdownx.tilde
 
 extra_css:
   # Custom CSS for a lot of stuff
