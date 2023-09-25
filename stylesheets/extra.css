@@ -1,0 +1,21 @@
+/* Add style to CSS or even Emojis here */
+
+@keyframes heart {
+  0%, 40%, 80%, 100% {
+    transform: scale(1);
+  }
+  20%, 60% {
+    transform: scale(1.15);
+  }
+}
+.heart {
+  animation: heart 1000ms infinite;
+}
+/* Rotates an icon 45 degrees */
+.rotateDiagonal {
+  transform: rotate(45deg)
+}
+
+.md-typeset h1, .md-content__button {
+  margin-bottom: 0em;
+}
