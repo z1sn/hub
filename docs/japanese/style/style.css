@@ -112,12 +112,12 @@ td {
 	font-size:85%;
 }
 
-.checkAll a {
+.checkMenu a {
 	color:#4d99b7;
 	cursor:pointer;
 }
 
-.checkAll {
+.checkMenu {
 	float:right;
 	font-size:75%;
     font-variant: small-caps;

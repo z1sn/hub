@@ -1,5 +1,10 @@
-/* MAP OF ALL HIRAGANA/KATAKANA */
-const KANA_LIST = {
+/***************************************
+*
+*  KANA DICTIONARY - And similar ones
+*
+***************************************/
+
+const CHAR_LIST = {
 	'hsingle' :
 		{ 'あ': 'a', 'い': 'i', 'う': 'u', 'え': 'e', 'お': 'o'},
 	'hk':
@@ -154,7 +159,7 @@ const KANA_LIST = {
 		{'つ': 'tsu', 'フ': 'fu', 'う': 'u', 'ラ': 'ra'},
 }
 
-const REPLACEMENT_LIST = {
+const ALTERNATE_ROMAJI_LIST = {
 	'o': ['wo'],
 	'chi': ['ci'],
 	'shi': ['si'],
@@ -167,201 +172,223 @@ const REPLACEMENT_LIST = {
 	'ju': ['dyu']
 }
 
+// Checkbox
 let CHECKED_COLUMNS = []
-let SHUFFLED_KANAS = []
 let CHECKED_FONT_LIST = []
 
+// Workflow
+let SHUFFLED_KANAS = []
 let CURRENT_KANA
 let CURRENT_ROMAJI
 
+// Answers
+let IS_WRONG
 let TOTAL_ANS = 0
 let TOTAL_CORRECT = 0
 
 
-/* MANAGES CACHE SETTINGS */
-function saveSettings() {
-	const inputs = document.getElementsByTagName('input')
-	for (let i = 0; i < inputs.length; i++) {
-		if (inputs[i].type == 'checkbox') {
-			let checked = inputs[i].checked ? '1' : '0'
-			localStorage.setItem('kana_' + inputs[i].id, checked)
-		}
-	}
-	collect()
-}
+/*****************************
+*
+*  LOCAL STORAGE MANAGEMENT
+*
+*****************************/
 
-function loadSettings() {
-	const inputs = document.getElementsByTagName('input')
-	for (let i = 0; i < inputs.length; i++) {
-		if (inputs[i].type == 'checkbox') {
-			let setting = localStorage.getItem('kana_' + inputs[i].id)
-			if(setting === '1') {
-				inputs[i].checked = true
-			} else if(setting === '0') {
-				inputs[i].checked = false
-			}
-		}
-	}
-	collect()
-}
+function getCheckBoxData() {
+	SHUFFLED_KANAS = [] // Resets all shuffled kanas so that the checkboxes are not useless
+	// :: Manages all columns with kana chars
+	CHECKED_COLUMNS = [] // Resets value
+	const kanaCheckBoxElements = document.getElementsByClassName('kanaCheckBox') // Gets all elements with 'kanaCheckBox' class name
+	let currentKanaColumn
 
-/* TABLE CHECKS/UNCHECKS */
-function check(set) {
-	const trs = document.getElementsByClassName(set)
-	for (let i = 0; i < trs.length; i++) {
-		let tds = trs[i].children
-		for (let x = 0; x < tds.length; x++) {
-			if (tds[x].children[0].id != 'KOI-WIN') {
-				tds[x].children[0].checked = true
-			}
-		}
-	}
-	saveSettings()
-}
-
-function uncheck(set) {
-	const trs = document.getElementsByClassName(set)
-	for (let i = 0; i < trs.length; i++) {
-		let tds = trs[i].children
-		for (let x = 0; x < tds.length; x++) {
-			tds[x].children[0].checked = false
-		}
-	}
-	saveSettings()
-}
-
-function shuffle(arr) {
-	let array = arr.slice(0)
-	let currentIndex = array.length, temporaryValue, randomIndex;
-
-	while (0 !== currentIndex) {
-		randomIndex = Math.floor(Math.random() * currentIndex)
-		currentIndex -= 1
-
-		temporaryValue = array[currentIndex]
-		array[currentIndex] = array[randomIndex]
-		array[randomIndex] = temporaryValue
-	}
-	return array
-}
-
-function collect() {
-	const checkedKana = document.getElementsByClassName('checkedKana')
-	CHECKED_COLUMNS = [] // Resets status
-	SHUFFLED_KANAS = [] // Resets status
-	for (let i = 0; i < checkedKana.length; i++) {
-		let cur = checkedKana[i]
-		if (cur.checked == true) {
-			for (p in KANA_LIST[cur.id]) {
-				CHECKED_COLUMNS.push( [p, KANA_LIST[cur.id][p]] )
+	for (let i = 0; i < kanaCheckBoxElements.length; i++) {
+		currentKanaColumn = kanaCheckBoxElements[i]
+		if (currentKanaColumn.checked == true) {
+			for (let showChar in CHAR_LIST[currentKanaColumn.id]) {
+				CHECKED_COLUMNS.push([showChar, CHAR_LIST[currentKanaColumn.id][showChar]])
 			}
 		}
 	}
 	
-	CHECKED_FONT_LIST = []
-	const checkedFont = document.getElementsByClassName('checkedFont')
-	for (let i = 0; i < checkedFont.length; i++) {
-		if(checkedFont[i].checked == true) {
-			CHECKED_FONT_LIST.push(checkedFont[i].id)
+	// :: Manages all columns with fonts
+	CHECKED_FONT_LIST = [] // Resets value
+	const fontCheckBoxElements = document.getElementsByClassName('fontCheckBox')
+	let currentFontColumn
+	for (let i = 0; i < fontCheckBoxElements.length; i++) {
+		currentFontColumn = fontCheckBoxElements[i]
+		if (currentFontColumn.checked == true) {
+			CHECKED_FONT_LIST.push(currentFontColumn.id)
 		}
 	}
+}
+
+
+function saveSettings() {
+	const inputTags = document.getElementsByTagName('input') // Creates an array with all tags that cointains input i.e. `<input id="stupid" class="md-toggle">`
+	for (let i = 0; i < inputTags.length; i++) {
+		if (inputTags[i].type == 'checkbox' && !inputTags[i].classList.contains("md-toggle")) { // Avoid `class="md-toggle"` ones
+			localStorage.setItem(`kana_${inputTags[i].id}`, inputTags[i].checked ? '1' : '0') // Stores `1` or `0` if is checked or not
+		}
+	}
+	getCheckBoxData()
+ }
+
+
+function loadSettings() {
+	let currentValue
+	const inputTags = document.getElementsByTagName('input')
+
+	for (let i = 0; i < inputTags.length; i++) {
+		if (inputTags[i].type === 'checkbox' && !inputTags[i].classList.contains("md-toggle")) { // Avoid `class="md-toggle"` ones
+			currentValue = localStorage.getItem(`kana_${inputTags[i].id}`) // Gets the current value from the specific ID
+			if (currentValue === '1') {
+				inputTags[i].checked = true
+			} else if (currentValue === '0') {
+				inputTags[i].checked = false
+			}
+		}
+	}
+	getCheckBoxData()
+}
+
+/***********************
+*
+*  Table onClick menu
+*
+***********************/
+
+function checkAll(currentTable) {
+	let td // <td>
+	const tr = document.getElementsByClassName(currentTable) // <tr>
+	for (let i = 0; i < tr.length; i++) {
+		td = tr[i].children
+		for (let j = 0; j < td.length; j++) {
+			if (td[j].children[0].id != 'KOI-WIN') { // Avoids checking this font because is hard
+				td[j].children[0].checked = true
+			}
+		}
+	}
+	saveSettings()
+}
+
+function uncheckAll(currentTable) {
+	let td // <td>
+	const tr = document.getElementsByClassName(currentTable) // <t>
+	for (let i = 0; i < tr.length; i++) {
+		td = tr[i].children
+		for (let j = 0; j < td.length; j++) {
+			td[j].children[0].checked = false
+		}
+	}
+	saveSettings()
+}
+
+/******************
+*
+*  'GAME' ENGINE
+*
+******************/
+
+function shuffle(arr) {
+	let arrCopy = arr.slice(0) // Create a copy of the input array to avoid manipulating the original
+	let currentIndex = arrCopy.length
+	let temp, randomIndex
+
+	// :: Fisher-Yates shuffle algorithm
+	while (currentIndex) { // When reaches 0, stops
+		randomIndex = Math.floor(Math.random() * currentIndex)
+		currentIndex--
+
+		// :: Swap elements at currentIndex and randomIndex
+		temp = arrCopy[currentIndex]
+		arrCopy[currentIndex] = arrCopy[randomIndex]
+		arrCopy[randomIndex] = temp
+	}
+	return arrCopy
 }
 
 function showKana() {	
-	wrong = false
-	document.getElementById('inputBox').value = ''
+	IS_WRONG = false 
+	document.getElementById('inputBox').value = '' // Erases the TextBox content
 	
-	if (CHECKED_COLUMNS.length == 0) {
+	// :: Sets default values if no checkboxes are checked
+	if (CHECKED_COLUMNS.length === 0) {
 		document.getElementById('hsingle').checked = true
 		saveSettings()
 	}
-	
 	if (CHECKED_FONT_LIST.length == 0) {
 		document.getElementById('default').checked = true
 		saveSettings()
 	}
 	
+	// :: Updates the count and message elements in the HTML if there are answers
 	if (TOTAL_ANS > 0) {
 		document.getElementById('count').innerHTML = `${TOTAL_CORRECT}/${TOTAL_ANS}`;
 		document.getElementById('message').innerHTML = '&nbsp;'
 	}
 	
-	if (SHUFFLED_KANAS.length == 0) {
+	// :: Sets a list of kanas to play with
+	if (SHUFFLED_KANAS.length === 0) {
 		SHUFFLED_KANAS = shuffle(CHECKED_COLUMNS)
 	}
 	
-	if (CURRENT_KANA && SHUFFLED_KANAS[0][0] == CURRENT_KANA) {
+	// :: Avoids repeating the same kana
+	if (CURRENT_KANA && SHUFFLED_KANAS[0][0] === CURRENT_KANA) {
 		SHUFFLED_KANAS.shift()
 	}
 	
+	// :: Sets current kana and romaji
 	CURRENT_KANA = SHUFFLED_KANAS[0][0]
 	CURRENT_ROMAJI = SHUFFLED_KANAS[0][1]
-	
+	// :: Advances to the next kana by removing the first element from the shuffled list
 	SHUFFLED_KANAS.shift()
 	
-	let font = CHECKED_FONT_LIST[Math.floor(Math.random() * CHECKED_FONT_LIST.length)]
-	
-	if (font == 'default') {
-		document.getElementById('kanaChar').innerHTML = CURRENT_KANA;
+	// :: Randomly selects a font from the available options to use with the kana
+	let currentFont = CHECKED_FONT_LIST[Math.floor(Math.random() * CHECKED_FONT_LIST.length)]
+	if (currentFont === 'default') {
+		document.getElementById('showChar').innerHTML = CURRENT_KANA;
 	} else {
-		document.getElementById('kanaChar').innerHTML = `<span style="font-family:'${font}';">${CURRENT_KANA}</span>`
+		document.getElementById('showChar').innerHTML = `<span style="font-family:'${currentFont}';">${CURRENT_KANA}</span>`
 	}
 	document.getElementById('answer').innerHTML = CURRENT_ROMAJI;
-	
 }
 
 function checkAnswer() {
-	let answer = document.getElementById('inputBox').value.toLowerCase()
+	let answer = document.getElementById('inputBox').value.toLowerCase() // Retrieve the typed answer from the input box and convert it to lowercase
 	if (!answer) {
-		answer = 'x'
+		answer = 'empty!'
 	}
-	
-	let chars = answer.split('')
-	let possible = [CURRENT_ROMAJI]
-
-	if (CURRENT_ROMAJI in REPLACEMENT_LIST) {
-		possible = possible.concat(REPLACEMENT_LIST[CURRENT_ROMAJI])
+	let answerChars = answer.split('') // Split the answer into individual characters
+	let correctAnswers = [CURRENT_ROMAJI] // Create an array with the current kana's correct answers
+	if (CURRENT_ROMAJI in ALTERNATE_ROMAJI_LIST) { // Check if there are alternate romaji in the ALTERNATE_ROMAJI_LIST
+		correctAnswers = correctAnswers.concat(ALTERNATE_ROMAJI_LIST[CURRENT_ROMAJI])
 	}
 
-	for (let i = 0; i < chars.length; i++) {
+	let err
+	// Loop through the characters of the answer
+	for (let i = 0; i < answerChars.length; i++) {
 		err = true
-		for (let x = 0; x < possible.length; x++) {
-			if(chars[i] == possible[x].charAt(i)) {
+		for (let j = 0; j < correctAnswers.length; j++) {
+			if (answerChars[i] === correctAnswers[j].charAt(i)) { // If the current character is correct, it is not a mistake, continue
 				err = false
-			}
-			if (answer == possible[x]) {
+			}	
+			if (answer === correctAnswers[j]) {
 				answer = CURRENT_ROMAJI
 			}
-		}
-		
-		if (err) {
-			break
-		}
+		}	
+		if (err) { break }
 	}
-	
-	if (err) {
-		wrong = true
+	if (err) { // Wrong answer
+		IS_WRONG = true
 		document.getElementById('message').innerHTML = `<span id="wrong">${CURRENT_KANA} = ${CURRENT_ROMAJI}</span>`
 	}
-	
-	if (answer == CURRENT_ROMAJI) {
-		TOTAL_ANS += 1
-		if (!wrong) {
-			TOTAL_CORRECT += 1
+	if (answer === CURRENT_ROMAJI) {
+		// If the answer is CORRECT, increment the total answers count and total correct count
+		TOTAL_ANS++
+		if (!IS_WRONG) {
+			TOTAL_CORRECT++
 		}
 		showKana()
 	}
-}
-
-function forceNext() {
-	if (SHUFFLED_KANAS.length > 3) {
-		SHUFFLED_KANAS.splice(3, 0, [CURRENT_KANA, CURRENT_ROMAJI])
-	}
-	if (SHUFFLED_KANAS.length > 13) {
-		SHUFFLED_KANAS.splice(13, 0, [CURRENT_KANA, CURRENT_ROMAJI])
-	}
-	TOTAL_ANS += 1
-	showKana()
 }
 
 function showAnswer() {
@@ -372,36 +399,37 @@ function hideAnswer() {
 	document.getElementById('answer').style.visibility = 'hidden'
 }
 
+
+/*****************************
+*
+*  LOAD EVERYTHING :: BRAIN
+*
+*****************************/
 onload = function () {
 	loadSettings()
-	
-	let inputs = document.getElementsByTagName('input')
-	for (let i = 0; i < inputs.length; i++) {
-		if (inputs[i].type == 'checkbox') {
-			inputs[i].onclick = saveSettings
-			inputs[i].onpropertychange = inputs[i].oninput
+	const inputTags = document.getElementsByTagName('input') // Creates an array with all tags that cointains input i.e. `<input id="stupid" class="md-toggle">`
+	for (let i = 0; i < inputTags.length; i++) {
+		if (inputTags[i].type === 'checkbox' && !inputTags[i].classList.contains("md-toggle")) {
+			inputTags[i].onclick = saveSettings // Save settings when clicking on a checkbox
 		}
 	}
-
 	showKana()
-	let kanaCharPreview = document.getElementById('kanaChar')
+
+	// :: Shows a hint by hovering over the kana
+	let kanaCharPreview = document.getElementById('showChar')
 	kanaCharPreview.onmouseover = showAnswer
 	kanaCharPreview.onmouseout = hideAnswer
 	
+	// :: Automatically sets focus on the input box and triggers answer checking without requiring a click
 	let answerInput = document.getElementById('inputBox')
 	answerInput.focus()
 	answerInput.oninput = checkAnswer
-	answerInput.onpropertychange = answerInput.oninput
 	
-	document.body.onkeydown = function(e){
+	// :: Prevent accidental use of SPACE or ENTER
+	document.body.onkeydown = function(e) {
 		document.getElementById('inputBox').focus()
-		if (e.key === 'Space' || e.key === 'Enter') {
+		if (e.key === ' ' || e.key === 'Enter') {
 			e.preventDefault()
-			if (!wrong) {
-				checkAnswer()
-			} else {
-				forceNext()
-			}
 		}
 	}
 }

@@ -13,33 +13,33 @@ icon: material/syllabary-hiragana
 ---
 <div id="game">
 	<div id="answer"></div>
-	<div id="kanaBox"><span id="kanaChar"></span></div>
+	<div id="kanaBox"><span id="showChar"></span></div>
     <div id="count"></div>
 	<div id="input"><input type="text" id="inputBox" autofocus=""></div>
 	<div id="message">Pasa el ratón por <strong>encima del kana</strong> para revelar la respuesta</div>
 </div>
 
 ??? note "Hiragana"
-    <h3>Hiragana <span class="checkAll">seleccionar: <a onclick="check('hiragana')">todo</a> | <a onclick="uncheck('hiragana')">nada</a></span></h3>
+    <h3>Hiragana <span class="checkMenu">seleccionar: <a onclick="checkAll('hiragana')">todo</a> | <a onclick="uncheckAll('hiragana')">nada</a></span></h3>
     <table>
         <tbody>
             <tr class="checkRow hiragana">
-                <td><input type="checkbox" class="checkedKana" id="hsingle" checked="checked"></td>
-                <td><input type="checkbox" class="checkedKana" id="hk"></td>
-                <td><input type="checkbox" class="checkedKana" id="hs"></td>
-                <td><input type="checkbox" class="checkedKana" id="ht"></td>
-                <td><input type="checkbox" class="checkedKana" id="hn"></td>
-                <td><input type="checkbox" class="checkedKana" id="hh"></td>
-                <td><input type="checkbox" class="checkedKana" id="hm"></td>
-                <td><input type="checkbox" class="checkedKana" id="hy"></td>
-                <td><input type="checkbox" class="checkedKana" id="hr"></td>
-                <td><input type="checkbox" class="checkedKana" id="hw"></td>
-                <td><input type="checkbox" class="checkedKana" id="hn1"></td>
-                <td><input type="checkbox" class="checkedKana" id="hg"></td>
-                <td><input type="checkbox" class="checkedKana" id="hz"></td>
-                <td><input type="checkbox" class="checkedKana" id="hd"></td>
-                <td><input type="checkbox" class="checkedKana" id="hb"></td>
-                <td><input type="checkbox" class="checkedKana" id="hp"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hsingle" checked="checked"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hk"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hs"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="ht"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hn"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hh"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hm"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hy"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hr"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hw"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hn1"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hg"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hz"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hd"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hb"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hp"></td>
             </tr>
             <tr>
                 <td><span class="kana">あ</span> <span class="romaji">a</span></td>
@@ -133,22 +133,22 @@ icon: material/syllabary-hiragana
             </tr>
         </tbody>
     </table>
-    <h3>Hiragana Yōon <span class="checkAll">seleccionar: <a onclick="check('hiraganaYoon')">todo</a> | <a onclick="uncheck('hiraganaYoon')">nada</a></span></h3>
+    <h3>Hiragana Yōon <span class="checkMenu">seleccionar: <a onclick="checkAll('hiraganaYoon')">todo</a> | <a onclick="uncheckAll('hiraganaYoon')">nada</a></span></h3>
     <table>
         <tbody>
             <tr class="checkRow hiraganaYoon">
-                <td><input type="checkbox" class="checkedKana" id="hdk"></td>
-                <td><input type="checkbox" class="checkedKana" id="hds"></td>
-                <td><input type="checkbox" class="checkedKana" id="hdc"></td>
-                <td><input type="checkbox" class="checkedKana" id="hdn"></td>
-                <td><input type="checkbox" class="checkedKana" id="hdh"></td>
-                <td><input type="checkbox" class="checkedKana" id="hdm"></td>
-                <td><input type="checkbox" class="checkedKana" id="hdr"></td>
-                <td><input type="checkbox" class="checkedKana" id="hdg"></td>
-                <td><input type="checkbox" class="checkedKana" id="hdj"></td>
-                <td><input type="checkbox" class="checkedKana" id="hdj2"></td>
-                <td><input type="checkbox" class="checkedKana" id="hdb"></td>
-                <td><input type="checkbox" class="checkedKana" id="hdp"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hdk"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hds"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hdc"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hdn"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hdh"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hdm"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hdr"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hdg"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hdj"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hdj2"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hdb"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="hdp"></td>
             </tr>
             <tr>
                 <td><span class="kana">きゃ</span> <span class="romaji">kya</span></td>
@@ -195,26 +195,26 @@ icon: material/syllabary-hiragana
         </tbody>
     </table>
 ??? note "Katakana"
-    <h3>Katakana <span class="checkAll">seleccionar: <a onclick="check('katakana')">todo</a> | <a onclick="uncheck('katakana')">nada</a></span></h3>
+    <h3>Katakana <span class="checkMenu">seleccionar: <a onclick="checkAll('katakana')">todo</a> | <a onclick="uncheckAll('katakana')">nada</a></span></h3>
     <table>
         <tbody>
             <tr class="checkRow katakana">
-                <td><input type="checkbox" class="checkedKana" id="ksingle"></td>
-                <td><input type="checkbox" class="checkedKana" id="kk"></td>
-                <td><input type="checkbox" class="checkedKana" id="ks"></td>
-                <td><input type="checkbox" class="checkedKana" id="kt"></td>
-                <td><input type="checkbox" class="checkedKana" id="kn"></td>
-                <td><input type="checkbox" class="checkedKana" id="kh"></td>
-                <td><input type="checkbox" class="checkedKana" id="km"></td>
-                <td><input type="checkbox" class="checkedKana" id="ky"></td>
-                <td><input type="checkbox" class="checkedKana" id="kr"></td>
-                <td><input type="checkbox" class="checkedKana" id="kw"></td>
-                <td><input type="checkbox" class="checkedKana" id="kn1"></td>
-                <td><input type="checkbox" class="checkedKana" id="kg"></td>
-                <td><input type="checkbox" class="checkedKana" id="kz"></td>
-                <td><input type="checkbox" class="checkedKana" id="kd"></td>
-                <td><input type="checkbox" class="checkedKana" id="kb"></td>
-                <td><input type="checkbox" class="checkedKana" id="kp"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="ksingle"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kk"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="ks"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kt"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kn"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kh"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="km"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="ky"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kr"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kw"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kn1"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kg"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kz"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kd"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kb"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kp"></td>
             </tr>
             <tr>
                 <td><span class="kana">ア</span> <span class="romaji">a</span></td>
@@ -308,22 +308,22 @@ icon: material/syllabary-hiragana
             </tr>
         </tbody>
     </table>
-    <h3>Katakana Yōon <span class="checkAll">seleccionar: <a onclick="check('katakanaYoon')">todo</a> | <a onclick="uncheck('katakanaYoon')">nada</a></span></h3>
+    <h3>Katakana Yōon <span class="checkMenu">seleccionar: <a onclick="checkAll('katakanaYoon')">todo</a> | <a onclick="uncheckAll('katakanaYoon')">nada</a></span></h3>
     <table>
         <tbody>
             <tr class="checkRow katakanaYoon">
-                <td><input type="checkbox" class="checkedKana" id="kdk"></td>
-                <td><input type="checkbox" class="checkedKana" id="kds"></td>
-                <td><input type="checkbox" class="checkedKana" id="kdc"></td>
-                <td><input type="checkbox" class="checkedKana" id="kdn"></td>
-                <td><input type="checkbox" class="checkedKana" id="kdh"></td>
-                <td><input type="checkbox" class="checkedKana" id="kdm"></td>
-                <td><input type="checkbox" class="checkedKana" id="kdr"></td>
-                <td><input type="checkbox" class="checkedKana" id="kdg"></td>
-                <td><input type="checkbox" class="checkedKana" id="kdj"></td>
-                <td><input type="checkbox" class="checkedKana" id="kdj2"></td>
-                <td><input type="checkbox" class="checkedKana" id="kdb"></td>
-                <td><input type="checkbox" class="checkedKana" id="kdp"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kdk"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kds"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kdc"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kdn"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kdh"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kdm"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kdr"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kdg"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kdj"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kdj2"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kdb"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="kdp"></td>
             </tr>
             <tr>
                 <td><span class="kana">キャ</span> <span class="romaji">kya</span></td>
@@ -370,7 +370,7 @@ icon: material/syllabary-hiragana
         </tbody>
     </table>
 ??? example "Kanas similares"    
-    <h3>Kanas similares <span class="checkAll">seleccionar: <a onclick="check('similars')">todo</a> | <a onclick="uncheck('similars')">nada</a></span></h3>
+    <h3>Kanas similares <span class="checkMenu">seleccionar: <a onclick="checkAll('similars')">todo</a> | <a onclick="uncheckAll('similars')">nada</a></span></h3>
         :fontawesome-solid-circle-info: Esta sección únicamente sirve para estudiar aquellos caracteres que son algo confusos entre sí.
     <table>
         <tbody>
@@ -380,23 +380,23 @@ icon: material/syllabary-hiragana
                 <td colspan="3">Ambos</td>
             </tr>
             <tr class="checkRow similars">
-                <td><input type="checkbox" class="checkedKana" id="sm1"></td>
-                <td><input type="checkbox" class="checkedKana" id="sm2"></td>
-                <td><input type="checkbox" class="checkedKana" id="sm3"></td>
-                <td><input type="checkbox" class="checkedKana" id="sm4"></td>
-                <td><input type="checkbox" class="checkedKana" id="sm5"></td>
-                <td><input type="checkbox" class="checkedKana" id="sm6"></td>
-                <td><input type="checkbox" class="checkedKana" id="sm7"></td>
-                <td><input type="checkbox" class="checkedKana" id="sm8"></td>
-                <td><input type="checkbox" class="checkedKana" id="sm9"></td>
-                <td><input type="checkbox" class="checkedKana" id="sm10"></td>
-                <td><input type="checkbox" class="checkedKana" id="sm11"></td>
-                <td><input type="checkbox" class="checkedKana" id="sm12"></td>
-                <td><input type="checkbox" class="checkedKana" id="sm13"></td>
-                <td><input type="checkbox" class="checkedKana" id="sm14"></td>
-                <td><input type="checkbox" class="checkedKana" id="sm15"></td>
-                <td><input type="checkbox" class="checkedKana" id="sm16"></td>
-                <td><input type="checkbox" class="checkedKana" id="sm17"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm1"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm2"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm3"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm4"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm5"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm6"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm7"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm8"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm9"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm10"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm11"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm12"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm13"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm14"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm15"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm16"></td>
+                <td><input type="checkbox" class="kanaCheckBox" id="sm17"></td>
             </tr>
             <tr>
                 <td><span class="kana">あ</span> <span class="romaji">a</span></td>
@@ -496,20 +496,20 @@ icon: material/syllabary-hiragana
         </tbody>
     </table>
 ??? abstract "Estilo de fuente"
-    <h3>Estilo de fuente <span class="checkAll">seleccionar: <a onclick="check('allFonts')">todo</a> | <a onclick="uncheck('allFonts')">nada</a></span></h3>
+    <h3>Estilo de fuente <span class="checkMenu">seleccionar: <a onclick="checkAll('allFonts')">todo</a> | <a onclick="uncheckAll('allFonts')">nada</a></span></h3>
     :fontawesome-solid-circle-info: Dependiendo de la fuente, <u>los caracteres pueden variar mucho</u>. Se recomienda la fuente por defecto para empezar.
     <table>
         <tbody>
             <tr class="checkRow allFonts">
-                <td><input type="checkbox" class="checkedFont" id="default" checked="checked"></td>
-                <td><input type="checkbox" class="checkedFont" id="A-OTF-BokutohNStd-Regular"></td>
-                <td><input type="checkbox" class="checkedFont" id="A-OTF-FolkPro-Regular"></td>
-                <td><input type="checkbox" class="checkedFont" id="A-OTF-HappyNStd-Regular"></td>
-                <td><input type="checkbox" class="checkedFont" id="A-OTF-KumoyaStd-Regular"></td>
-                <td><input type="checkbox" class="checkedFont" id="A-OTF-KyokaICAPro-Regular"></td>
-                <td><input type="checkbox" class="checkedFont" id="A-OTF-Shuuei3Std-Regular"></td>
-                <td><input type="checkbox" class="checkedFont" id="A-OTF-ZenGoNStd-Regular"></td>
-                <td><input type="checkbox" class="checkedFont" id="ArmedBanana"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="default" checked="checked"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="A-OTF-BokutohNStd-Regular"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="A-OTF-FolkPro-Regular"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="A-OTF-HappyNStd-Regular"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="A-OTF-KumoyaStd-Regular"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="A-OTF-KyokaICAPro-Regular"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="A-OTF-Shuuei3Std-Regular"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="A-OTF-ZenGoNStd-Regular"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="ArmedBanana"></td>
             </tr>
             <tr>
                 <td><span class="fontPreview">きもの</span></td>
@@ -523,15 +523,15 @@ icon: material/syllabary-hiragana
                 <td><span class="fontPreview" style="font-family: 'ArmedBanana';">きもの</span></td>
             </tr>
             <tr class="checkRow allFonts">
-                <td><input type="checkbox" class="checkedFont" id="DFCry5_0"></td>
-                <td><input type="checkbox" class="checkedFont" id="DFMrg3_0"></td>
-                <td><input type="checkbox" class="checkedFont" id="F5AJCCPE_0"></td>
-                <td><input type="checkbox" class="checkedFont" id="F5AJCMHG"></td>
-                <td><input type="checkbox" class="checkedFont" id="MT_TARE"></td>
-                <td><input type="checkbox" class="checkedFont" id="SM-WIN"></td>
-                <td><input type="checkbox" class="checkedFont" id="SNsanafon"></td>
-                <td><input type="checkbox" class="checkedFont" id="sea"></td>
-                <td><input type="checkbox" class="checkedFont" id="KOI-WIN"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="DFCry5_0"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="DFMrg3_0"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="F5AJCCPE_0"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="F5AJCMHG"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="MT_TARE"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="SM-WIN"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="SNsanafon"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="sea"></td>
+                <td><input type="checkbox" class="fontCheckBox" id="KOI-WIN"></td>
             </tr>
             <tr>
                 <td><span class="fontPreview" style="font-family: 'DFCry5_0';">きもの</span></td>
